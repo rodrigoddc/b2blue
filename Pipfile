@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Django = "<3,>=2"
+djangorestframework = "==3.12.4"
+python-decouple = "==3.4"
+pytest-django = "==4.4.0"
+coverage = "==5.5"
+dj-database-url = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
