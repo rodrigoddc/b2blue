@@ -1,0 +1,89 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} B2blue {% endblock %}
+
+
+
+{% block content %}
+
+<header>
+
+    <section class="container px-4 pb-5 my-5 text-center">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert text-center {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <h1 class="fw-bold pb-3">This show in detail!</h1>
+        <div class="row">
+            <div class="col-md-5 h-100">
+                <img src="{{ item.poster }}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-7">
+                <div class="col-12">
+                    <div class="card border-secondary mb-3 h-100">
+                        <div class="card-header"><h5 class="card-title">{{ item.name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text">Popularity: {{ item.popularity }}</p>
+                            <p class="card-text">Year: {{ item.release_year }}</p>
+                            <p class="card-text">First episode release: {{ item.release_date_first_epi }}</p>
+                            <p class="card-text">Total episodes: {{ item.total_epi }}</p>
+                            <p class="card-text">Geners: {{ item.gender }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 ">
+                    <div class="card border-secondary mb-3">
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">Add your review!</h5>
+                            <form method="POST" action="{% url 'core:show-vote' item.show_id %}" class="row g-3 " >
+                                {% csrf_token %}
+                                <div class="col-6">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="my_username">
+                                </div>
+                                <div class="col-6">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input name="password" type="password" class="form-control" id="password" placeholder="******">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row row-cols-lg-auto g-3 align-items-center">
+                                        <div class="col-2">
+                                            <label for="rating" class="col-form-label">Rating</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input name="rating" type="text" pattern="[0-9]{,10}" class="form-control" id="rating" placeholder="Ex: 5.0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-outline-success btn-lg px-4"><i class="fas fa-vote-yea"></i>Vote!</button>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            {% for item in reviews %}
+            <div class="col-4">
+                <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                     src="{{ item.avatar_path }}" role="img">
+                <h2>{{ item.name }}</h2>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text">{{ item.rating }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+</header>
+
+
+{% endblock %}

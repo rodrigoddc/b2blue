@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+
+class GaleryAdmin(admin.ModelAdmin):
+    list_display = ("__str__", )

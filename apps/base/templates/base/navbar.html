@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar01" aria-controls="navbar01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse justify-content-md-center collapse" id="navbar01" style="">
+        <ul class="navbar-nav pt-4 pb-2">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'base:home' %}"><span class="h5 fw-bolder text-info">B2blue</span></a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Options</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown08">
+              <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a></li>
+              <li><a class="dropdown-item" href="{% url 'base:home' %}">Home</a></li>
+              <li><a class="dropdown-item" href="{% url 'core:top-100' %}">Top 100 tv series</a></li>
+              <li><a class="dropdown-item" href="{% url 'core:show-discover' %}">Discover - <i>under construction</i></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

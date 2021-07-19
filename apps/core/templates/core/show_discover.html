@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} B2blue - TMDB API integration{% endblock %}
+
+
+
+{% block content %}
+
+<header>
+    <section class="px-4 pb-5 my-5 text-center min-vh-100">
+        <div class="alert alert-warning" role="alert">
+            This page is under construction
+        </div>
+
+        <h1 class="display-5 fw-bold">Find the what you are looking for!</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead my-4">Here you can filter then by name, release year and/or popularity order</p>
+            <form action="{% url 'core:show-discover' %}" method="GET">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="show-name" class="form-label">Program name</label>
+                        <input id="show-name" name="show_name" type="text" class="form-control" placeholder="Ex: Matrix" aria-label="program name" aria-describedby="button-addon1">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="release-year" class="form-label">Release year</label>
+                        <input id="release-year" name="release_year" type="text" pattern="[0-9]+{4}" class="form-control" placeholder="Ex: 2021" aria-label="popularity" aria-describedby="button-addon1">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="popularity" class="form-label">Popularity value</label>
+                        <input id="popularity" name="popularity" type="text" pattern="[0-9].{,10}+" class="form-control" placeholder="Ex: 100" aria-label="popularity" aria-describedby="button-addon1">
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 mx-auto">
+            {% if context %}
+            <p>{{ context }}</p>
+            {% endif %}
+        </div>
+
+
+    </section>
+</header>
+
+
+{% endblock %}

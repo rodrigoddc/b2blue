@@ -1,0 +1,86 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} B2blue {% endblock %}
+
+
+
+{% block content %}
+
+<header>
+    <section class="container px-4 py-5 my-3 text-center">
+        <h1 class="fw-bold">Top 100 popular TV series!</h1>
+
+        <nav class="mt-5" aria-label="pagination">
+            <ul class="pagination pagination-sm justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+
+                {% for pg in page_obj.paginator.page_range %}
+                {% if pg == page_obj.number %}
+                <li class="page-item active"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+            {% for item in page_obj %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ item.poster }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-truncate">{{ item.description }}</p>
+                        <p class="card-text">Popularity: <span class="fw-bold">{{ item.popularity }}</span></p>
+                        <p class="card-text">Votes: <span class="fw-bold">{{ item.votes }}</span></p>
+                        <span class="card-text">Year: <span class="fw-bold">{{ item.release_year }}</span></span>
+                    </div>
+                    <div class="card-footer bg-dark">
+                        <a href="{% url 'core:show-detail' item.show_id %}" class="nav-link text-light"><i class="fas fa-info-circle"></i> Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav class="mt-5" aria-label="pagination">
+            <ul class="pagination pagination-sm justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+
+                {% for pg in page_obj.paginator.page_range %}
+                {% if pg == page_obj.number %}
+                <li class="page-item active"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+</header>
+
+
+{% endblock %}
