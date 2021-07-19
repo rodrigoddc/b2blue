@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  SECRET_KEY:  'SOME_SCRET_KEY'
-  DEBUG:  true
-
 jobs:
   build:
 
