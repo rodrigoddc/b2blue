@@ -111,9 +111,6 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 TMDB_API_KEY = config("TMDB_API_KEY")
 TMDB_BASE_URL = config("TMDB_BASE_URL")
 TMDB_BASE_IMG_URL = config("TMDB_BASE_IMG_URL")
