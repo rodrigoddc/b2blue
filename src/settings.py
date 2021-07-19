@@ -31,13 +31,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # third apps
-    'django_extensions',
-
     # project apps
     'apps.base',
     'apps.core',
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('django_extensions')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
