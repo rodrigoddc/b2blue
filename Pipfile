@@ -5,21 +5,15 @@ name = "pypi"
 
 [packages]
 Django = "<3,>=2"
-pytest-django = "==4.4.0"
 python-decouple = "==3.4"
-dj-database-url = "*"
-requests = "*"
-Pillow = "*"
-whitenoise = "*"
-psycopg2 = "<2.9,>=2.8"
+pytest-django = "==4.4.0"
 coverage = "==5.5"
+psycopg2 = "<2.9,>=2.8"
+whitenoise = "*"
+dj-database-url = "*"
 gunicorn = "*"
 
 [dev-packages]
-flake8 = "*"
-django-extensions = "*"
-ipython = "*"
-coverage = "==5.5"
 
 [requires]
 python_version = "3.8"
